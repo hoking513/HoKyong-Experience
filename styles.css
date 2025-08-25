@@ -1,71 +1,216 @@
-/* -------- Base -------- */
-:root { --maxw: 900px; --muted:#6b7280; --card:#f8fafc; --line:#e5e7eb; }
+/* =========================
+   Base (기본 설정)
+   ========================= */
+/* 전역 변수: 최대 폭, 색상 팔레트 등 */
+:root {
+  --maxw: 900px;
+  --muted: #6b7280;
+  --card: #f8fafc;
+  --line: #e5e7eb;
+}
+
+/* 모든 요소 박스 모델 통일 */
 * { box-sizing: border-box; }
-html,body { margin:0; padding:0; }
+
+/* 문서 기본 여백 제거 */
+html, body { margin: 0; padding: 0; }
+
+/* 본문 기본 타이포, 라인 높이, 색상 */
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, sans-serif;
-  line-height: 1.65; color:#111827; background:#fff;
+  line-height: 1.65;
+  color: #111827;
+  background: #fff;
 }
-.container { max-width: var(--maxw); margin: 56px auto; padding: 0 20px; }
-h1,h3 { line-height:1.25; margin: 0.6em 0 0.35em; }
+
+/* 중앙 정렬 컨테이너(최대 폭 + 좌우 패딩) */
+.container {
+  max-width: var(--maxw);
+  margin: 56px auto;
+  padding: 0 20px;
+}
+
+/* 제목 기본 간격(공통) */
+h1, h3 {
+  line-height: 1.25;
+  margin: 0.6em 0 0.35em;
+}
+
+/* h2 전역 스타일: 텍스트 길이만큼 초록 밑줄 */
 h2 {
-  display: inline-block;            /* 글자 길이만큼만 밑줄 */
-  border-bottom: 3px solid #22c55e; /* 초록색 밑줄 (#22c55e = green-500 계열) */
-  padding-bottom: 4px;              /* 글자와 밑줄 간격 */
-  margin-bottom: 12px;              /* 밑줄과 다음 내용 사이 간격 */
+  display: inline-block;             /* 글자 길이만큼만 밑줄 보이기 */
+  border-bottom: 3px solid #22c55e;  /* 초록색 밑줄 */
+  padding-bottom: 4px;               /* 글자와 밑줄 간격 */
+  margin-bottom: 12px;               /* 밑줄과 다음 내용 간격 */
 }
+
+/* 문단 기본 여백 */
 p { margin: 0.3em 0 1em; }
-a { color:#2563eb; text-decoration: none; }
+
+/* 링크 기본/호버 스타일 */
+a { color: #2563eb; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* -------- Header / Nav -------- */
+
+/* =========================
+   Header / Nav (헤더/네비)
+   ========================= */
 .header { margin-bottom: 28px; }
-.header .title { font-size: 60px; font-weight: 800; }
-.header .subtitle { color: var(--muted); margin-top: 6px; }
-.nav { margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+
+/* 큰 타이틀 */
+.header .title {
+  font-size: 60px;
+  font-weight: 800;
+}
+
+/* 서브타이틀: 은은한 회색 */
+.header .subtitle {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* 네비 배지 목록: 줄바꿈/간격 대응 */
+.nav {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 네비용 라운드 배지 */
 .badge {
-  display:inline-block; font-size: 12px; padding: 4px 10px; border:1px solid var(--line);
-  border-radius: 999px; color:#111827; background:#fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #111827;
+  background: #fff;
 }
-.badge:hover { background:#f3f4f6; text-decoration:none; }
+.badge:hover {
+  background: #f3f4f6;
+  text-decoration: none; /* 호버 시 밑줄 방지 */
+}
 
-/* -------- Sections -------- */
+
+/* =========================
+   Sections (섹션 공통)
+   ========================= */
 .section { margin: 36px 0; }
-.section h2 { font-size: 22px; border-bottom:1px solid var(--line); padding-bottom:6px; }
 
-/* -------- Cards (Links, Tech Stack 등) -------- */
-.grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); }
+/* 섹션 내 h2 커스텀: 크기/여백만 제어(밑줄은 전역 h2 유지) */
+.section h2 {
+  font-size: 22px;
+  /* border-bottom 제거하여 전역 h2의 초록 밑줄을 덮어쓰지 않게 함 */
+  border-bottom: none;
+  padding-bottom: 4px;
+}
+
+
+/* =========================
+   Cards (그리드/카드 UI)
+   ========================= */
+/* 반응형 카드 그리드: 최소 240px로 자동 채움 */
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* 카드 스타일: 밝은 배경 + 라운드 + 경계 */
 .card {
-  background: var(--card); border:1px solid var(--line); border-radius: 10px;
-  padding:14px 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
 }
-.card h3 { font-size:16px; margin:0 0 4px; }
-.card p { margin:0; color:var(--muted); }
 
-/* -------- Experience (Timeline 스타일) -------- */
-.timeline { position: relative; margin-left: 8px; }
+/* 카드 제목/설명 타이포 */
+.card h3 {
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+
+/* =========================
+   Experience (타임라인)
+   ========================= */
+/* 타임라인 수직 가이드 라인 */
+.timeline {
+  position: relative;
+  margin-left: 8px;
+}
 .timeline::before {
-  content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--line);
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
 }
-.item { position:relative; padding-left:28px; margin:18px 0; }
+
+/* 타임라인 아이템 + 포인트 */
+.item {
+  position: relative;
+  padding-left: 28px; /* 라인/점과 텍스트 간격 */
+  margin: 18px 0;
+}
 .item::before {
-  content:""; position:absolute; left:2px; top:6px; width:12px; height:12px;
-  border-radius:50%; background:#fff; border:2px solid #2563eb;
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #2563eb; /* 포인트 색상 */
 }
-.role { font-weight:700; }
-.meta { color:var(--muted); font-size: 13px; margin-top: 2px; }
-.kicker { font-weight:700; color:#111827; margin-bottom:6px; }
+
+/* 역할/직함 강조 */
+.role { font-weight: 700; }
+
+/* 메타 정보(기간/지역 등) */
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* 소제목(작은 강조 텍스트) */
+.kicker {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+/* 불릿 리스트 여백 다듬기 */
 .ul { margin: 8px 0 0 18px; }
 .ul li { margin: 4px 0; }
 
-/* -------- Tech badges -------- */
-.tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
-.tag {
-  font-size:12px; padding:2px 8px; border:1px solid var(--line); border-radius:999px;
-  background:#fff; color:#111827;
+
+/* =========================
+   Tech badges (기술 태그)
+   ========================= */
+/* 태그 래퍼: 줄바꿈/간격 처리 */
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
 
-/* -------- Footer -------- */
-footer { margin: 40px 0 24px; color: var(--muted); font-size:14px; }
-
-
+/* 개별 태그 배지 */
+.tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+} /*
