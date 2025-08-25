@@ -1,4 +1,63 @@
-body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
-h1, h2 { margin-bottom: 0; }
-p.meta { color: gray; }
-a { margin-right: 10px; }
+/* -------- Base -------- */
+:root { --maxw: 900px; --muted:#6b7280; --card:#f8fafc; --line:#e5e7eb; }
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, sans-serif;
+  line-height: 1.65; color:#111827; background:#fff;
+}
+.container { max-width: var(--maxw); margin: 56px auto; padding: 0 20px; }
+h1,h2,h3 { line-height:1.25; margin: 0.6em 0 0.35em; }
+p { margin: 0.3em 0 1em; }
+a { color:#2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -------- Header / Nav -------- */
+.header { margin-bottom: 28px; }
+.header .title { font-size: 32px; font-weight: 800; }
+.header .subtitle { color: var(--muted); margin-top: 6px; }
+.nav { margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+.badge {
+  display:inline-block; font-size: 12px; padding: 4px 10px; border:1px solid var(--line);
+  border-radius: 999px; color:#111827; background:#fff;
+}
+.badge:hover { background:#f3f4f6; text-decoration:none; }
+
+/* -------- Sections -------- */
+.section { margin: 36px 0; }
+.section h2 { font-size: 22px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+
+/* -------- Cards (Links, Tech Stack 등) -------- */
+.grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); }
+.card {
+  background: var(--card); border:1px solid var(--line); border-radius: 10px;
+  padding:14px 16px;
+}
+.card h3 { font-size:16px; margin:0 0 4px; }
+.card p { margin:0; color:var(--muted); }
+
+/* -------- Experience (Timeline 스타일) -------- */
+.timeline { position: relative; margin-left: 8px; }
+.timeline::before {
+  content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--line);
+}
+.item { position:relative; padding-left:28px; margin:18px 0; }
+.item::before {
+  content:""; position:absolute; left:2px; top:6px; width:12px; height:12px;
+  border-radius:50%; background:#fff; border:2px solid #2563eb;
+}
+.role { font-weight:700; }
+.meta { color:var(--muted); font-size: 13px; margin-top: 2px; }
+.kicker { font-weight:700; color:#111827; margin-bottom:6px; }
+.ul { margin: 8px 0 0 18px; }
+.ul li { margin: 4px 0; }
+
+/* -------- Tech badges -------- */
+.tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.tag {
+  font-size:12px; padding:2px 8px; border:1px solid var(--line); border-radius:999px;
+  background:#fff; color:#111827;
+}
+
+/* -------- Footer -------- */
+footer { margin: 40px 0 24px; color: var(--muted); font-size:14px; }
